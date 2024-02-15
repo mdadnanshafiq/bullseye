@@ -24,16 +24,16 @@
     </style>
 </head>
 
-<body class="bg-[#010313] h-screen bg-[url(images/background.png)] bg-no-repeat bg-contain bg-center mx-auto robot">
+<body class="bg-[#010313] h-screen bg-[url(images/background.png)] bg-no-repeat bg-cover bg-center mx-auto robot">
     <main>
         <section id="home" class="text-white flex flex-col justify-center items-center h-screen gap-8 text-pretty ">
             <h1 class="text-[5.25rem] font-extrabold">
-                BullsEye <i class="fa-solid fa-bullseye"></i>
+                BullsEye <i class="fa-solid fa-bullseye text-red-600"></i>
             </h1>
             <p class="">
                 Unleash Your Keyboard Kung Fu : Press “Enter” to Play
             </p>
-            <button id="playBtn" class="btn">
+            <button id="playBtn" class="btn bg-[#da3131] text-white border-0 rounded-full active:bg-[#da3131] hover:bg-[#da3131]">
                 Play Now
             </button>
         </section>
@@ -41,7 +41,7 @@
             <div
                 class="artboard artboard-horizontal phone-6 bg-[#FFFFFFB2] border-[#010313CC] border-[20px] rounded-lg flex flex-col justify-start items-center gap-14">
                 <p class="text-white bg-[#010313CC] py-1 px-4 rounded-b-lg">Don't watch keyboard while playing...</p>
-                <p id="display" class="text-8xl font-bold uppercase"></p>
+                <p id="display" class="text-8xl font-bold uppercase">Y</p>
             </div>
             <div>
                 <div class="flex justify-center gap-1 my-1 w-full">
@@ -79,13 +79,13 @@
             </div>
             <div class="flex justify-center items-center gap-[40vw]">
                 <button 
-                    class="btn bg-[#894189] text-white border-0 rounded-full active:bg-[#894189] hover:bg-[#894189]">
+                    class="btn bg-[#18691e] text-white border-0 rounded-full active:bg-[#18691e] hover:bg-[#18691e]">
                     Life
                     <i class="fa-solid fa-heart-circle-bolt"></i>
                     <span id="lifeBtn">5</span>
                 </button>
                 <button 
-                    class="btn bg-[#360490] text-white border-0 rounded-full active:bg-[#360490] hover:bg-[#360490]">
+                    class="btn bg-[#37b6ff] text-white border-0 rounded-full active:bg-[#37b6ff] hover:bg-[#37b6ff]">
                     Score
                     <i class="fa-solid fa-dollar-sign"></i>
                     <span id="scoreBtn">0</span>
@@ -101,7 +101,7 @@
                         <span id="finalScore">0</span>
                     </h2>
                     <div id="playBtn2" class="card-actions justify-end">
-                        <button class="btn px-6 py-2 ">Play Now</button>
+                        <button class="btn px-6 py-2 bg-[#da31c3] text-white border-0 rounded-full active:bg-[#da31c3] hover:bg-[#da31c3]">Play Again</button>
                     </div>
                     <p>Practice will make you Pro</p>
                 </div>

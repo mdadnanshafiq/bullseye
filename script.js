@@ -19,11 +19,12 @@ let life = 5;
 
 document.addEventListener('keyup', function (e) {
     let key = e.key;
-    demo(key);
+    main(key);
 });
 
-function demo(key) {
+function main(key) {
     if (key === 'Enter') {
+        
         removeColor(display.innerText.toLowerCase());
         playNow();
 
