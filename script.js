@@ -15,19 +15,15 @@ playBtn.addEventListener('click', playNow);
 playBtn2.addEventListener('click', playNow);
 
 
-document.addEventListener('keyup', function (e) {
-    if (e.key === 'Escape') {
-        endGame();
-    }
-});
-
 
 document.addEventListener('keyup', function (e) {
     if (e.key === 'Enter') {
-        
-        display.innerText = random();
         playNow();
-        
+    } else if (e.key === 'Escape') {
+        endGame();
+    }
+    else {
+
     }
 });
 
@@ -35,15 +31,15 @@ document.addEventListener('keyup', function (e) {
 
 function setColor(elementId) {
 
-        let element = document.getElementById(elementId);
-        element.style.backgroundColor = '#FFA500';
+    let element = document.getElementById(elementId);
+    element.style.backgroundColor = '#FFA500';
 
 
 }
 function removeColor(elementId) {
 
-        let element = document.getElementById(elementId);
-        element.style.backgroundColor = '#FFFFFF';
+    let element = document.getElementById(elementId);
+    element.style.backgroundColor = '#FFFFFF';
 
 
 }
@@ -52,16 +48,13 @@ function playNow() {
     home.classList.add('hidden');
     result.classList.add('hidden');
     game.classList.remove('hidden');
-
-    setColor(display.innerText.toLowerCase());
+    display.innerText = random();
 }
 
 function endGame() {
     home.classList.add('hidden');
     result.classList.remove('hidden');
     game.classList.add('hidden');
-
-    removeColor(display.innerText.toLowerCase());
 
 }
 
