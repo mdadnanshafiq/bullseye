@@ -4,8 +4,8 @@ const result = document.getElementById('result');
 // ---------------------------------------------
 const playBtn = document.getElementById('playBtn');
 const playBtn2 = document.getElementById('playBtn2');
-const lifeBtn = document.getElementById('lifeBtn');
-const scoreBtn = document.getElementById('scoreBtn');
+let lifeBtn = document.getElementById('lifeBtn');
+let scoreBtn = document.getElementById('scoreBtn');
 // ----------------------------------------------------
 const display = document.getElementById('display');
 const finalScore = document.getElementById('finalScore');
@@ -14,18 +14,42 @@ const finalScore = document.getElementById('finalScore');
 playBtn.addEventListener('click', playNow);
 playBtn2.addEventListener('click', playNow);
 
-
+let score = 0;
+let life = 5;
 
 document.addEventListener('keyup', function (e) {
-    if (e.key === 'Enter') {
-        playNow();
-    } else if (e.key === 'Escape') {
-        endGame();
-    }
-    else {
-
-    }
+    let key = e.key;
+    demo(key);
 });
+
+function demo(key) {
+    if (key === 'Enter') {
+        removeColor(display.innerText.toLowerCase());
+        playNow();
+
+
+    } else if (key === 'Escape') {
+        endGame();
+        removeColor(display.innerText.toLowerCase());
+    } else if (key === display.innerText.toLowerCase()) {
+        
+        score++;
+        scoreBtn.innerText = score;
+        removeColor(key);
+        display.innerText = random();
+        setColor(display.innerText.toLowerCase());
+    } else {
+
+        life--;
+        lifeBtn.innerText = life;
+        if(lifeBtn.innerText === '0'){
+            endGame();
+            finalScore.innerText = score;
+            removeColor(display.innerText.toLowerCase());
+        }
+        
+    }
+}
 
 
 
@@ -49,6 +73,11 @@ function playNow() {
     result.classList.add('hidden');
     game.classList.remove('hidden');
     display.innerText = random();
+    score = 0;
+    life = 5;
+    scoreBtn.innerText = 0;
+    lifeBtn.innerText = 5;
+    setColor(display.innerText.toLowerCase());
 }
 
 function endGame() {
@@ -59,7 +88,7 @@ function endGame() {
 }
 
 function random() {
-    const atoz = 'aquickbrownfoxjumpsoverthelazydogs';
+    const atoz = 'qwertyuioplkjhgfdsazxcvbnm';
     const atozSplit = atoz.split('');
     let randomNumber = parseInt(Math.round(Math.random() * 25));
     let randomLetter = atozSplit[randomNumber];
