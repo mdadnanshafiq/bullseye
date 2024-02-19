@@ -10,6 +10,8 @@ let scoreBtn = document.getElementById('scoreBtn');
 const display = document.getElementById('display');
 const finalScore = document.getElementById('finalScore');
 
+const audio = new Audio();
+
 
 playBtn.addEventListener('click', playNow);
 playBtn2.addEventListener('click', playNow);
@@ -24,7 +26,7 @@ document.addEventListener('keyup', function (e) {
 
 function main(key) {
     if (key === 'Enter') {
-        
+
         removeColor(display.innerText.toLowerCase());
         playNow();
 
@@ -32,23 +34,41 @@ function main(key) {
     } else if (key === 'Escape') {
         endGame();
         removeColor(display.innerText.toLowerCase());
+        finalScore.innerText = score;
     } else if (key === display.innerText.toLowerCase()) {
-        
+
         score++;
         scoreBtn.innerText = score;
         removeColor(key);
         display.innerText = random();
         setColor(display.innerText.toLowerCase());
-    } else {
+        if (!game.classList.contains('hidden')) {
+            audio.src = "audio/success.mp3";
+            audio.play();
+        }
+
+    } else if (key !== display.innerText.toLowerCase() && !game.classList.contains('hidden')) {
 
         life--;
         lifeBtn.innerText = life;
-        if(lifeBtn.innerText === '0'){
+        audio.src = "audio/loss.mp3";
+        audio.play();
+        const artboard = document.getElementById('artboard');
+
+        let lifePercent = life * 20;
+        artboard.style.background = `linear-gradient(#FFFFFFB2 ${lifePercent}%, #FF7F7F)`;
+
+        if (lifeBtn.innerText === '0' && !game.classList.contains('hidden')) {
             endGame();
+            audio.src = '';
+            audio.pause;
             finalScore.innerText = score;
             removeColor(display.innerText.toLowerCase());
+            artboard.style.background = `linear-gradient(#FFFFFFB2 100%, #FF7F7F)`;
         }
-        
+
+    } else {
+        return;
     }
 }
 
@@ -70,6 +90,7 @@ function removeColor(elementId) {
 }
 
 function playNow() {
+
     home.classList.add('hidden');
     result.classList.add('hidden');
     game.classList.remove('hidden');
@@ -82,6 +103,7 @@ function playNow() {
 }
 
 function endGame() {
+    audio.src = '';
     home.classList.add('hidden');
     result.classList.remove('hidden');
     game.classList.add('hidden');
